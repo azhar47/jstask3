@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JS Task-3</title>
+
+        <!-- Meta Keyword For Search Engine -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- BootStrap Here -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <!-- Custom CSS Here -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link href="css/custom.css" rel="stylesheet" type="text/css"/>
+
+
+        <!-- Fav Icon -->
+        <link href="images/js1_0.png" rel="icon" type="images/png"/>
+    </head>
+    <body>
+
+
+        <!-- Small modal -->
+
+
+        <div class="modal fade hello" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div id="form">
+                                <h1 class="text-center">Sign-up Form</h1>
+                                <form action="#" name="signup">
+                                    <input type="text" name="fname" id="fff" class="form-control form-group" placeholder="First Name" required>
+                                    <input type="text" name="sname" class="form-control form-group" placeholder="Sure Name" required>
+                                    <input type="email" name="mail" class="form-control form-group" placeholder="Email Address" required>
+                                    <input type="email" name="rmail" class="form-control form-group"  placeholder="Re-type Email Address" required>
+
+                                    <input type="text" name="mobile" class="form-control form-group" placeholder="Mobile number" required>
+                                    <input type="password" name="pw" class="form-control form-group" placeholder="Password" required>
+                                    <input type="password" name="rpw" class="form-control form-group" placeholder="Re-type Password" required>
+                                    <button type="submit" class="btn btn-success" onclick="Signup();">Sign-up</button>
+
+                                </form>
+                                <h3 id="message"></h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="jumbotron">
+                        <h2 class="text-center text-info" id="clock"> </h2>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                    <div class="palindrome jumbotron" id="hvreffect" onmouseover="hvrOver();" onmouseleave="hvrLeave();">
+                        <h3>Input below in the box & check out is it Palindrome ?</h3>
+                        <input type="text" class="input-sm text-primary" style="font-size:18px;" id="p_scanf">
+                        <button type="button" class="btn btn-sm btn-success" onclick="Pclck();"> Show Answer</button>
+                        <h3 id="P_printf" class="text-capitalize"></h3>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                    <div id="prime" class="jumbotron">
+                        <h3>Input below in the box & check out is it Prime Number ?</h3>
+                        <input type="text" class="input-sm text-success" style="font-size:18px;" id="prime_scanf">
+                        <button type="button" class="btn btn-sm btn-success" onclick="Prclck();"> Show Answer</button>
+                        <h3 id="prime_printf" class="text-capitalize"></h3>
+                        <script>
+                            function Prclck() {
+                                var p = document.getElementById("prime_scanf").value;
+                                if (p == "") {
+                                    document.getElementById("prime_printf").innerHTML = "Empty input.Please input above in the box";
+                                } else if (p >= "a" && p <= "z") {
+                                    document.getElementById("prime_printf").innerHTML = "Invalid input.Please input Number above in the box";
+                                } else if (p % 2 !== 0) {
+                                    document.getElementById("prime_printf").innerHTML = p + " " + "is a prime number";
+                                } else {
+                                    document.getElementById("prime_printf").innerHTML =  p + " " + "is not a prime number";
+                                }
+                            }
+
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Js Start here -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <script>
+
+                            setTimeout(
+                                    function del() {
+                                        $('.hello').modal('show');
+                                    }, 4000);
+                            del();
+
+        </script>
+        <script>
+            function Signup() {
+                var fn = document.signup.fname.value;
+                var sn = document.signup.sname.value;
+                var em = document.signup.mail.value;
+                var rem = document.signup.rmail.value;
+                var nmbr = document.signup.mobile.value;
+                var pw = document.signup.pw.value;
+                var rpw = document.signup.rpw.value;
+                if (fn == "" || sn == "" || em == "" || rem == "" || nmbr == "" || pw == "" || rpw == "") {
+                    document.getElementById("message").style.color = "red";
+                    document.getElementById("message").innerHTML = "Filled up the form Above, Can not empty any field !";
+                } else if (em !== rem) {
+                    document.getElementById("dee").innerHTML = "Email Not Matched";
+                } else if (nmbr.length < 11) {
+                    document.getElementById("message").innerHTML = "Enter Your Valid Mobile Number";
+                } else if (pw.length < 8) {
+                    document.getElementById("message").innerHTML = "Password  Must Be Contains 8-character";
+                } else if (pw !== rpw) {
+                    document.getElementById("message").innerHTML = "Password Not Matched";
+                } else {
+                    document.getElementById("message").innerHTML = "Sign-Up Successfully.Check Your Email for Confirmation";
+                }
+
+
+
+
+            }
+        </script>
+
+
+
+
+        <script>
+            function Cliiick() {
+                var a = new Date();
+                var Time = a.toLocaleTimeString();
+                var date = a.toLocaleDateString();
+
+                var d = new Date();
+                var wd = new Array(7);
+                wd[0] = "Sunday";
+                wd[1] = "Monday";
+                wd[2] = "Tuesday";
+                wd[3] = "Wednesday";
+                wd[4] = "Thursday";
+                wd[5] = "Friday";
+                wd[6] = "Saturday";
+
+                var n = wd[d.getDay()];
+                document.getElementById("clock").innerHTML = "Time is: " + Time + "<br> Today : " + n + " " + "<br>" + "Date: "
+                        + date;
+            }
+
+            setInterval(
+                    function () {
+                        Cliiick();
+                    }, 1000
+                    )
+
+        </script>
+        <!--Palidrom Script Here -->
+        <script>
+            function Pclck() {
+                var word = document.getElementById("p_scanf").value;
+                var i = word.length;
+                var rvrs = "";
+                for (var j = i; j >= 0; j--) {
+
+                    rvrs = rvrs + word.charAt(j);
+                }
+                if (word == "") {
+                    document.getElementById("P_printf").innerHTML = "Empty input.Please input above in the box";
+                } else if (word == rvrs) {
+                    document.getElementById("P_printf").innerHTML = rvrs + " " + "Is a Palindrome";
+                } else {
+                    document.getElementById("P_printf").innerHTML = rvrs + " " + "is Not a Palindrome";
+                }
+            }
+
+        </script> 
+        <script>
+            function hvrOver() {
+                document.getElementById("hvreffect").style.background = "#3879D9";
+                document.getElementById("hvreffect").style.height = "280px";
+                document.getElementById("hvreffect").style.color = "#fff";
+            }
+            function hvrLeave() {
+                document.getElementById("hvreffect").style.background = "rgb(255, 0, 0)";
+                document.getElementById("hvreffect").style.height = "290px";
+                document.getElementById("hvreffect").style.border = "4px dotted #ddd";
+            }
+        </script>
+    </body>
+</html>
